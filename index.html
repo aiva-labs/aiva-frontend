@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIVA: AI Virtual Assistant</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#6366f1" />
+
+    <!-- Apple PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AIVA" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- OG / Twitter -->
+    <meta property="og:title" content="AIVA: AI Virtual Assistant" />
+    <meta property="og:description" content="Your personal AI agent with multi-chain crypto wallets, task automation, and mobile-first PWA experience." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AIVA: AI Virtual Assistant" />
+    <meta name="twitter:description" content="Your personal AI agent with multi-chain crypto wallets, task automation, and mobile-first PWA experience." />
+    <meta name="twitter:site" content="@replit" />
+
+    <!-- Capture beforeinstallprompt early -->
+    <script>
+      window.__deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        window.__deferredInstallPrompt = e;
+      });
+    </script>
+
+    <!-- Register service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
